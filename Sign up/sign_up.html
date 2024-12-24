@@ -4,13 +4,11 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Sign up | Popland</title>
-   <link rel="stylesheet" href="/Sign up/sign_up.css">
+   <link rel="stylesheet" href="sign_up.css">
 </head>
 <body>
    <div class="container">
-      <button class="close-btn" id="closeBtn">×</button>
       <div class="sign-up-box">
-         <img src="/Sign up/Login.jpg" alt="Logo">
          <div class="sign-up-header">
             <header>REGISTER</header>
          </div>
@@ -20,9 +18,7 @@
          <div class="input-box">
             <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
          </div>
-         <div class="input-box">
-            <input type="text" class="input-field" placeholder="Phone" autocomplete="off" required>
-         </div>
+         
          <div class="input-box">
             <input
               type="password"
@@ -51,20 +47,20 @@
             <button class="submit-btn" id="submit"></button>
             <label for="submit">Register</label>
           </div>
+          <div class="join_with">
+            <div class="title">
+              —— Join with —— 
+            </div>
+            <div class="social">
+             <a href="https://www.google.com.vn/?hl=vi"> <img src="https://www.popmart.com/_next/image?url=https%3A%2F%2Fcdn-global-eude.popmart.com%2Fglobal-web%2Feude-prod%2F20241218160337%2F_next%2Fstatic%2Fmedia%2Fgoogle-icon.82804fca.png&w=1920&q=75" alt="google" class="img-social"></a>
+              <a href="https://www.apple.com/vn/"><img src="https://www.popmart.com/_next/image?url=https%3A%2F%2Fcdn-global-eude.popmart.com%2Fglobal-web%2Feude-prod%2F20241218160337%2F_next%2Fstatic%2Fmedia%2Fapple-icon.8100a06a.png&w=1920&q=75" alt="apple" class="img-social"></a>
+            </div>
+          </div>
           <div class="sign-in-link">
             <p>Have account? <a href="login.html">Sign in</a></p>
           </div>
          </div>
       </div>
    </div>
-   <script>
-            // Bắt sự kiện click nút thoát
-document.getElementById('closeBtn').addEventListener('click', () => {
-  // Chuyển hướng sang trang khác
-  //window.history.back();
-  window.location.href = "../giohang/giohang.html";
-});
-
-   </script>
 </body>
 </html>

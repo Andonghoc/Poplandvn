@@ -19,6 +19,7 @@ body {
   background-color: #ffffff;
   width: 40%;
   border-radius: 10px;
+  flex: 1;
 }
 .login-box {
   display: flex;
@@ -134,6 +135,9 @@ section a {
 .sign-up-link a {
   color: black;
   font-weight: 600;
+}
+footer {
+  margin-top: auto;
 }
 
 /* Thêm Media Queries cho Tablet */

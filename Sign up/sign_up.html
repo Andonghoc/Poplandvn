@@ -228,12 +228,10 @@
             <label for="check">Remember me</label>
           </section>
         </div>
-        <a href="/giohang/giohang.css">
-          <div class="input-submit">
-            <button class="submit-btn" id="submit"></button>
-            <label for="submit">Register</label>
-          </div>
-        </a>
+        <div class="input-submit">
+          <button class="submit-btn" id="submit"></button>
+          <label for="submit">Register</label>
+        </div>
         <div class="join_with">
           <div class="title">—— Join with ——</div>
           <div class="social">
@@ -252,9 +250,65 @@
           </div>
         </div>
         <div class="sign-in-link">
-          <p>Have account? <a href="login.html">Sign in</a></p>
+          <p>Have account? <a href="/Login/login.html">Sign in</a></p>
         </div>
       </div>
     </div>
+    <script>
+      // Hiển thị thông báo dưới dạng popup
+function showNotification(message, type) {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 100);
+
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 3000); // Thông báo tự biến mất sau 3 giây
+}
+
+// Thay đổi các thông báo sang tiếng Việt
+document.getElementById('submit').addEventListener('click', () => {
+  const inputs = document.querySelectorAll('.input-field');
+  const [fullName, email, password, confirmPassword] = inputs;
+
+  if (!fullName.value || !email.value || !password.value || !confirmPassword.value) {
+    showNotification('Vui lòng điền đầy đủ thông tin!', 'error');
+    return;
+  }
+
+  if (!validateEmail(email.value)) {
+    showNotification('Email không hợp lệ!', 'error');
+    return;
+  }
+
+  if (password.value.length < 6) {
+    showNotification('Mật khẩu phải có ít nhất 6 ký tự!', 'error');
+    return;
+  }
+
+  if (password.value !== confirmPassword.value) {
+    showNotification('Mật khẩu không khớp!', 'error');
+    return;
+  }
+
+  showNotification('Đăng ký thành công!', 'success');
+});
+
+// Hàm kiểm tra định dạng email
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+    </script>
   </body>
 </html>

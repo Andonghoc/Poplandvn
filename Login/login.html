@@ -219,12 +219,10 @@
             <a href="#">Forgot password</a>
           </section>
         </div>
-        <a href="/giohang/giohang.css">
-          <div class="input-submit">
-            <button class="submit-btn" id="submit"></button>
-            <label for="submit">Sign in</label>
-          </div>
-        </a>
+        <div class="input-submit">
+          <button class="submit-btn" id="submit"></button>
+          <label for="submit">Sign in</label>
+        </div>
         <div class="join_with">
           <div class="title">—— Join with ——</div>
           <div class="social">
@@ -243,11 +241,62 @@
           </div>
         </div>
         <div class="sign-up-link">
-          <p>Don't have account? <a href="sign_up.html">Sign up</a></p>
+          <p>Don't have account? <a href="/Sign up/sign_up.html">Sign up</a></p>
         </div>
       </div>
     </div>
-    <br>
+    <script>
+      // Đoạn mã kiểm tra đăng nhập
+// Thêm đoạn này vào trong file HTML hoặc tệp JavaScript riêng biệt
+
+document.getElementById("submit").addEventListener("click", function () {
+    const emailField = document.querySelector("input[placeholder='Email']");
+    const passwordField = document.querySelector("input[placeholder='Password']");
+    const email = emailField.value.trim();
+    const password = passwordField.value.trim();
+
+    // Xóa các thông báo cũ
+    const existingNotification = document.getElementById("notification");
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // Tạo phần tử thông báo
+    const notification = document.createElement("div");
+    notification.id = "notification";
+    notification.style.position = "fixed";
+    notification.style.top = "20%";
+    notification.style.left = "50%";
+    notification.style.transform = "translate(-50%, -50%)";
+    notification.style.padding = "20px";
+    notification.style.backgroundColor = "#f8d7da";
+    notification.style.color = "#721c24";
+    notification.style.border = "1px solid #f5c6cb";
+    notification.style.borderRadius = "8px";
+    notification.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+    notification.style.zIndex = "1000";
+
+    if (!email || !password) {
+        notification.innerText = "Vui lòng nhập đầy đủ thông tin.";
+    } else if (email === "admin@example.com" && password === "123456") {
+        notification.style.backgroundColor = "#d4edda";
+        notification.style.color = "#155724";
+        notification.style.border = "1px solid #c3e6cb";
+        notification.innerText = "Đăng nhập thành công!";
+    } else {
+        notification.innerText = "Thông tin đăng nhập không đúng. Vui lòng thử lại.";
+    }
+
+    // Thêm thông báo vào body
+    document.body.appendChild(notification);
+
+    // Tự động xóa thông báo sau 3 giây
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+});
+
+    </script>
     
   </body>
 </html>

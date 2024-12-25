@@ -162,13 +162,13 @@ section a {
 
 .notification.success {
   color: #3bc53e;
-  border: green;
+  border: rgb(102, 161, 102);
   background-color: #96b196; /* Màu xanh cho thành công */
 }
 
 .notification.error {
   color: #d00021;
-  border: red;
+  border: rgb(193, 133, 133);
   background-color: #dca29e; /* Màu đỏ cho lỗi */
 }
 

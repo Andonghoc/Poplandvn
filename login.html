@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +10,11 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="icon" href="/img/android-chrome-512x512.png" type="image/x-icon">
+    <link
+      rel="icon"
+      href="/img/android-chrome-512x512.png"
+      type="image/x-icon"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -26,7 +28,7 @@
       <div class="login-box">
         <!-- Nút Thoát -->
         <button class="close-btn" id="closeBtn">×</button>
-        <img src="Login.jpg" alt="Logo ne">
+        <img src="Login.jpg" alt="Logo ne" />
         <div class="login-header">
           <header>SIGN IN</header>
         </div>
@@ -67,14 +69,64 @@
       </div>
     </div>
     <script>
-      // Bắt sự kiện click nút thoát
-document.getElementById('closeBtn').addEventListener('click', () => {
-  // Chuyển hướng sang trang khác
-  //window.history.back();
-  window.location.href = "../index.html";
-});
+      // Đoạn mã kiểm tra đăng nhập
 
+      document.getElementById("submit").addEventListener("click", function () {
+        const emailField = document.querySelector("input[placeholder='Email']");
+        const passwordField = document.querySelector(
+          "input[placeholder='Password']"
+        );
+        const email = emailField.value.trim();
+        const password = passwordField.value.trim();
+
+        // Xóa các thông báo cũ
+        const existingNotification = document.getElementById("notification");
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+
+        // Tạo phần tử thông báo
+        const notification = document.createElement("div");
+        notification.id = "notification";
+        notification.style.position = "fixed";
+        notification.style.top = "20%";
+        notification.style.left = "50%";
+        notification.style.transform = "translate(-50%, -50%)";
+        notification.style.padding = "20px";
+        notification.style.backgroundColor = "#f8d7da";
+        notification.style.color = "#721c24";
+        notification.style.border = "1px solid #f5c6cb";
+        notification.style.borderRadius = "8px";
+        notification.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+        notification.style.zIndex = "1000";
+
+        if (!email || !password) {
+          notification.innerText = "Vui lòng nhập đầy đủ thông tin.";
+        } else if (email === "admin@example.com" && password === "123456") {
+          notification.style.backgroundColor = "#d4edda";
+          notification.style.color = "#155724";
+          notification.style.border = "1px solid #c3e6cb";
+          notification.innerText = "Đăng nhập thành công!";
+        } else {
+          notification.innerText =
+            "Thông tin đăng nhập không đúng. Vui lòng thử lại.";
+        }
+
+        // Thêm thông báo vào body
+        document.body.appendChild(notification);
+
+        // Tự động xóa thông báo sau 3 giây
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      });
+
+      // Bắt sự kiện click nút thoát
+      document.getElementById("closeBtn").addEventListener("click", () => {
+        // Chuyển hướng sang trang khác
+        //window.history.back();
+        window.location.href = "../index.html";
+      });
     </script>
   </body>
 </html>
-

@@ -110,6 +110,9 @@ nav a:hover + .content,
   text-align: center;
   font-weight: bold;
 }
+a {
+  text-decoration: none;
+}
 
 /*------------------------------------------------------------------------*/
 .search-and-icons {

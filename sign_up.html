@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign up | Popland</title>
+   <link rel="icon" href="/img/android-chrome-512x512.png" type="image/x-icon">
+   <link rel="stylesheet" href="sign_up.css">
+</head>
+<body>
+   <div class="container">
+      <button class="close-btn" id="closeBtn">×</button>
+      <div class="sign-up-box">
+         <img src="Login.jpg" alt="Logo">
+         <div class="sign-up-header">
+            <header>REGISTER</header>
+         </div>
+         <div class="input-box">
+            <input type="text" class="input-field" placeholder="Full name" autocomplete="off" required>
+         </div>
+         <div class="input-box">
+            <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
+         </div>
+         <div class="input-box">
+            <input type="text" class="input-field" placeholder="Phone" autocomplete="off" required>
+         </div>
+         <div class="input-box">
+            <input
+              type="password"
+              class="input-field"
+              placeholder="Password"
+              autocomplete="off"
+              required
+            />
+          </div>
+         <div class="input-box">
+            <input
+              type="password"
+              class="input-field"
+              placeholder="Confirm Password"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="check">
+            <section>
+              <input type="checkbox" id="check" />
+              <label for="check">Remember me</label>
+            </section>
+          </div>
+          <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit">Register</label>
+          </div>
+          <div class="sign-in-link">
+            <p>Have account? <a href="login.html">Sign in</a></p>
+          </div>
+         </div>
+      </div>
+   </div>
+   <script>
+      document.getElementById("submit").addEventListener("click", function () {
+        const fullNameField = document.querySelector("input[placeholder='Full name']");
+        const emailField = document.querySelector("input[placeholder='Email']");
+        const phoneField = document.querySelector("input[placeholder='Phone']");
+        const passwordField = document.querySelector("input[placeholder='Password']");
+        const confirmPasswordField = document.querySelector("input[placeholder='Confirm Password']");
+    
+        const fullName = fullNameField.value.trim();
+        const email = emailField.value.trim();
+        const phone = phoneField.value.trim();
+        const password = passwordField.value.trim();
+        const confirmPassword = confirmPasswordField.value.trim();
+    
+        const existingNotification = document.getElementById("notification");
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+    
+        const notification = document.createElement("div");
+        notification.id = "notification";
+        notification.style.position = "fixed";
+        notification.style.top = "50%";
+        notification.style.left = "50%";
+        notification.style.transform = "translate(-50%, -50%)";
+        notification.style.padding = "20px";
+        notification.style.fontSize = "18px";
+        notification.style.textAlign = "center";
+        notification.style.borderRadius = "8px";
+        notification.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        notification.style.zIndex = "1000";
+    
+        if (!fullName || !email || !phone || !password || !confirmPassword) {
+          notification.style.backgroundColor = "#f8d7da";
+          notification.style.color = "#721c24";
+          notification.style.border = "1px solid #f5c6cb";
+          notification.innerText = "Vui lòng nhập đầy đủ thông tin.";
+        } else if (password !== confirmPassword) {
+          notification.style.backgroundColor = "#f8d7da";
+          notification.style.color = "#721c24";
+          notification.style.border = "1px solid #f5c6cb";
+          notification.innerText = "Mật khẩu xác nhận không khớp.";
+        } else {
+          notification.style.backgroundColor = "#d4edda";
+          notification.style.color = "#155724";
+          notification.style.border = "1px solid #c3e6cb";
+          notification.innerText = "Đăng kí thành công!";
+        }
+    
+        document.body.appendChild(notification);
+    
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      });
+    </script>
+    
+</body>
+</html>

@@ -1,23 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Get elements
   const popupContainer = document.getElementById('popupContainer');
   const closePopupButton = document.getElementById('closePopup');
   const introVideo = document.getElementById('introVideo');
 
-  // Show popup after 3 seconds
   setTimeout(() => {
-    popupContainer.style.display = 'flex'; // Show the popup
-    introVideo.play(); // Automatically play the video
-  }, 3000); // 3 seconds
+    popupContainer.style.display = 'flex'; // Hiển thị popup
+    introVideo.play(); // Bắt đầu phát video
+  }, 3000); // Sau 3 giây
 
-  // Close popup when the close button is clicked
   closePopupButton.addEventListener('click', () => {
-    popupContainer.style.display = 'none'; // Hide the popup
-    introVideo.pause(); // Pause the video
+    popupContainer.style.display = 'none'; // Ẩn popup
+    introVideo.pause(); // Dừng phát video
   });
 });
 
-
+/*Dùng dropdown cho bộ lọc*/
 
 document.getElementById('dropdown-btn').addEventListener('click', function () {
     const dropdownContent = document.getElementById('dropdown-content');
@@ -56,50 +53,50 @@ document.addEventListener('click', (event) => {
   }
 });
 
-
+/*Phân trang sản phẩm*/
 document.addEventListener("DOMContentLoaded", function () {
   const products = document.querySelectorAll('.product');
   const pageButtons = document.querySelectorAll('.page-btn');
-  const productsPerPage = 12; // Number of products per page
-  let currentPage = 1;
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const productsPerPage = 12; // Số lượng sản phẩm trên 1 trang
+  let currentPage = 1; //Trang hiện tại
+  const totalPages = Math.ceil(products.length / productsPerPage); //Tính tổng số lượng page
 
   function showPage(page) {
-    const startIndex = (page - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
+    const startIndex = (page - 1) * productsPerPage;//Vị trí bắt đầu của sản phẩm trên trang
+    const endIndex = startIndex + productsPerPage;// Vị trí kết thúc của sản phẩm
 
-    // Show products for the current page
+    // Hiện thị sản phẩm trên trang
     products.forEach((product, index) => {
       product.style.display = index >= startIndex && index < endIndex ? 'block' : 'none';
     });
 
-    // Update pagination buttons
-    pageButtons.forEach(button => button.classList.remove('active'));
-    document.querySelector(`.page-btn[data-page="${page}"]`)?.classList.add('active');
+    // Cập nhật trạng thái của nút
+    pageButtons.forEach(button => button.classList.remove('active'));//Xóa
+    document.querySelector(`.page-btn[data-page="${page}"]`)?.classList.add('active');//Gắn trạng thái cho nút
 
-    // Enable/Disable prev and next buttons
-    document.querySelector('.page-btn[data-page="prev"]').disabled = page === 1;
-    document.querySelector('.page-btn[data-page="next"]').disabled = page === totalPages;
+    // kích hoạt/ vô hiệu hóa nút
+    document.querySelector('.page-btn[data-page="prev"]').disabled = page === 1;//Vô hiệu hóa prev nếu ở trang 1
+    document.querySelector('.page-btn[data-page="next"]').disabled = page === totalPages;//Vô hiệu hóa next nếu ở trang cuối
   }
 
-  // Event listeners for pagination buttons
+  // Cập nhật nội dung nút
   document.querySelector('.pagination').addEventListener('click', event => {
-    const button = event.target;
-    if (button.classList.contains('page-btn')) {
-      const page = button.dataset.page;
+    const button = event.target;//Nút được nhấn
+    if (button.classList.contains('page-btn')) { //Nếu nút thuộc page-btn
+      const page = button.dataset.page;//Lấy số trang từ thuộc tính data-page
 
       if (page === 'prev' && currentPage > 1) {
-        currentPage--;
+        currentPage--;//Giảm trang khi ấn 
       } else if (page === 'next' && currentPage < totalPages) {
-        currentPage++;
-      } else if (!isNaN(page)) {
-        currentPage = parseInt(page);
+        currentPage++;//Tăng trang khi ấn
+      } else if (!isNaN(page)) {//Nếu là số trang cụ thể
+        currentPage = parseInt(page);//Chuyển đổi thành số nguyên
       }
 
-      showPage(currentPage);
+      showPage(currentPage);//Hiển thị nội dung trang mới
     }
   });
 
-  // Initialize the first page
+  // Hiển thị nội dung trang đầu tiên
   showPage(1);
 });

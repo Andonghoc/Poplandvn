@@ -275,6 +275,13 @@ function showNotification(message, type) {
   }, 3000); // Thông báo tự biến mất sau 3 giây
 }
 
+// Bắt sự kiện click nút thoát
+document.getElementById("closeBtn").addEventListener("click", () => {
+        // Chuyển hướng sang trang khác
+        //window.history.back();
+        window.location.href = "index.html";
+
+      });
 
 document.getElementById('submit').addEventListener('click', () => {
   const inputs = document.querySelectorAll('.input-field');

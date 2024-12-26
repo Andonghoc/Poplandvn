@@ -187,6 +187,7 @@
     </div>
   
     </header>
+    
     <div class="container">
       <div class="login-box">
         <div class="login-header">
@@ -295,6 +296,16 @@ document.getElementById("submit").addEventListener("click", function () {
         notification.remove();
     }, 3000);
 });
+
+// Bắt sự kiện click nút thoát
+document.getElementById("closeBtn").addEventListener("click", () => {
+        // Chuyển hướng sang trang khác
+        //window.history.back();
+        window.location.href = "index.html";
+
+      });
+
+
 
     </script>
     

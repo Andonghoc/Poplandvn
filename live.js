@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const chatIcon = document.getElementById("chatIcon");
+    const chatHelps = document.getElementById("helps");
     const ChatWidget = document.getElementById("ChatWidget");
     const zaloChatBtn = document.getElementById("fbChatBtn");
     const quickChatBtn = document.getElementById("quickChatBtn");
@@ -10,7 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     //chatIcon.addEventListener("click", function () {
       //ChatWidget.style.display = "block";
    // });
-
+   
+   chatHelps.addEventListener("click", function () {
+    if (ChatWidget.style.display === "block") {
+      ChatWidget.style.display = "none"; // Ẩn nếu đang hiện
+    } else {
+      ChatWidget.style.display = "block"; // Hiện nếu đang ẩn
+    }
+  });
 
 
    

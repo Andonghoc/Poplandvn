@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(to right, #f0f9ff, #cbebf9);
+        margin: 0;
+        padding: 0;
+      }
+
+      .checkout-container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+      }
+
+      .checkout-header h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #007b7b;
+      }
+
+      .product-section {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+      }
+
+      .product-preview {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .product-image {
+        width: 120px;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .product-info {
+        flex: 1;
+      }
+
+      .product-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .product-price {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .btn-quantity {
+        width: 30px;
+        height: 30px;
+        background: #f0f0f0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .exit-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ff4d4d;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .exit-button a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .exit-button:hover {
+        background-color: #cc0000;
+      }
+
+      .customer-info,
+      .payment-info,
+      .summary {
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #007b7b;
+        margin-bottom: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 5px; /* Khoảng cách giữa các dòng */
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      input {
+        width: 95%;
+        padding: 10px;
+        margin-top: 2px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
+
+      .summary {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .summary-item.total {
+        font-weight: bold;
+        color: #007b7b;
+      }
+
+      .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: #007b7b;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .checkout-btn:hover {
+        background: #005959;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="checkout-container">
+      <button class="exit-button" id="exit-button">
+        <a href="/product_detail/AZURA A .html">x</a>
+      </button>
+      <header class="checkout-header">
+        <h1>Thanh Toán</h1>
+      </header>
+      <section class="product-section">
+        <div class="product-preview">
+          <img
+            src="https://prod-eurasian-res.popmart.com/default/20240723_173051_081592____1_____1200x1200.jpg?x-oss-process=image/resize,p_30,format,webp,format,webp"
+            alt="Sản phẩm chi tiết"
+            class="product-image"
+          />
+          <div class="product-info">
+            <h4 class="product-title">
+              AZURA A Dream About Stars Series Figures
+            </h4>
+            <p class="product-price">
+              Giá: <span id="product-price">280,000 ₫</span>
+            </p>
+            <div class="quantity-control">
+              <button class="btn-quantity" id="decrease-quantity">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="number" id="quantity" value="1" min="1" />
+              <button class="btn-quantity" id="increase-quantity">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="customer-info">
+        <h3>Thông Tin Khách Hàng</h3>
+        <form id="customer-form">
+          <div class="form-group">
+            <label for="name">Họ và Tên</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Nhập họ và tên"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Nhập email của bạn"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <input
+              type="text"
+              id="address"
+              placeholder="Nhập địa chỉ"
+              required
+            />
+          </div>
+        </form>
+      </section>
+      <section class="payment-info">
+        <h3>Phương Thức Thanh Toán</h3>
+        <select id="payment-method">
+          <option value="credit-card">Thẻ tín dụng</option>
+          <option value="paypal">PayPal</option>
+          <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
+        </select>
+      </section>
+      <section class="summary">
+        <h3>Tóm Tắt</h3>
+        <div class="summary-item">
+          <span>Giá sản phẩm:</span>
+          <span id="summary-price">280,000 ₫</span>
+        </div>
+        <div class="summary-item">
+          <span>Phí vận chuyển:</span>
+          <span id="shipping-cost">20,000 ₫</span>
+        </div>
+        <div class="summary-item total">
+          <span>Tổng cộng:</span>
+          <span id="total-price">300,000 ₫</span>
+        </div>
+      </section>
+      <button class="checkout-btn" id="checkout-btn">Đặt Hàng</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const pricePerItem = 280000;
+        const shippingCost = 20000;
+
+        const quantityInput = document.getElementById("quantity");
+        const summaryPrice = document.getElementById("summary-price");
+        const totalPrice = document.getElementById("total-price");
+
+        // Cập nhật tổng giá khi số lượng thay đổi
+        quantityInput.addEventListener("input", () => {
+          const quantity = Math.max(parseInt(quantityInput.value) || 1, 1);
+          const itemTotal = quantity * pricePerItem;
+          summaryPrice.textContent = `${itemTotal.toLocaleString()} ₫`;
+          totalPrice.textContent = `${(
+            itemTotal + shippingCost
+          ).toLocaleString()} ₫`;
+        });
+
+        // Tăng/giảm số lượng
+        document
+          .getElementById("increase-quantity")
+          .addEventListener("click", () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            quantityInput.dispatchEvent(new Event("input"));
+          });
+
+        document
+          .getElementById("decrease-quantity")
+          .addEventListener("click", () => {
+            quantityInput.value = Math.max(
+              parseInt(quantityInput.value) - 1,
+              1
+            );
+            quantityInput.dispatchEvent(new Event("input"));
+          });
+
+        // Hiển thị thông báo ở giữa trang
+        function showNotification(message, success = true) {
+          const notification = document.createElement("div");
+          notification.textContent = message;
+          notification.style.position = "fixed";
+          notification.style.top = "50%";
+          notification.style.left = "50%";
+          notification.style.transform = "translate(-50%, -50%)";
+          notification.style.backgroundColor = success ? "#4caf50" : "#f44336"; // Màu xanh nếu thành công, đỏ nếu lỗi
+          notification.style.color = "white";
+          notification.style.padding = "20px 40px";
+          notification.style.borderRadius = "10px";
+          notification.style.textAlign = "center";
+          notification.style.fontSize = "18px";
+          notification.style.zIndex = "1000";
+          document.body.appendChild(notification);
+
+          setTimeout(() => {
+            notification.remove();
+            if (success) {
+              // Trở về trang trước đó
+              window.history.back();
+            }
+          }, 2000); // Hiển thị thông báo trong 2 giây
+        }
+
+        // Đặt hàng
+        document
+          .getElementById("checkout-btn")
+          .addEventListener("click", () => {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            if (!name || !email || !address) {
+              showNotification("Vui lòng điền đầy đủ thông tin!", false);
+            } else {
+              showNotification("Đặt hàng thành công!");
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

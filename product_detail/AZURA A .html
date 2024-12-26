@@ -179,8 +179,8 @@
          <i class="fa-solid fa-user"></i>
          <span class="login-text">
 
-             <a href="sign_up.html">Đăng ký</a> /<br>
-             <a href="login.html">Đăng nhập</a>
+             <a href="/sign_up.html">Đăng ký</a> /<br>
+             <a href="/login.html">Đăng nhập</a>
 
          </span>
      </div>
@@ -346,7 +346,7 @@
             </div>
             <div class="action-container">
               <div class="add-to-cart1"><b>ADD TO CART</b></div>
-              <div class="buy-now"><b>BUY NOW</b></div>
+              <div class="buy-now"><a href="thanhtoan.html"><b>BUY NOW</b></a></div>
             </div>
             <div class="details-section">
               <h3 onclick="toggleDetails('detailsContent', 'detailsIcon')">
@@ -627,6 +627,21 @@ document.querySelector('.like').addEventListener('click', function () {
       const icon = this.querySelector('i');
       icon.classList.toggle('fa-regular');
       icon.classList.toggle('fa-solid');
+    });
+
+    let cartCount = 0;
+    let cartDetailsVisible = false;
+    let totalAmount = 0;
+    const itemPrice = 100000; // Price per item in VND
+
+    document.querySelector('.add-to-cart1').addEventListener('click', () => {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        cartCount += quantity;
+        totalAmount += itemPrice * quantity;
+        document.getElementById('item-count').textContent = cartCount;
+        const cartItems = document.getElementById('.name');
+        cartItems.innerHTML += `<div>Item x${quantity} - ${product-price * quantity} ₫</div>`;
+        document.getElementById('total').textContent = `Total: ${totalAmount} ₫`;
     });
 
     </script>

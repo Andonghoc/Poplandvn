@@ -10,8 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #CAE8EA;
-
+  background: #cae8ea;
 }
 .container {
   display: flex;
@@ -22,10 +21,11 @@ body {
   border-radius: 10px;
 }
 
-.container img{
+.container img {
   border-radius: 50%;
   width: 100%;
 }
+
 .login-box {
   display: flex;
   justify-content: center;
@@ -34,10 +34,10 @@ body {
   height: auto;
   padding: 30px;
 }
-.login-box img{
+.login-box img {
   border-radius: 50%;
   width: 30%;
-  margin: 0 133px;
+  margin: 0 auto;
 }
 .login-header {
   text-align: center;
@@ -47,6 +47,20 @@ body {
   color: #333;
   font-size: 30px;
   font-weight: 600;
+}
+.login {
+  font-size: 18px;
+  line-height: 20px;
+}
+.logo img {
+  margin-bottom: 15px;
+  height: 40px;
+}
+.favorites {
+  right: 5.8%;
+}
+.content {
+  width: 180%;
 }
 .input-box .input-field {
   width: 100%;
@@ -97,7 +111,7 @@ section a {
 .submit-btn {
   width: 100%;
   height: 60px;
-  background: #B2EBF2;
+  background: #b2ebf2;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -157,6 +171,7 @@ section a {
   .login-box {
     padding: 15px;
   }
+
   .login-header header {
     font-size: 24px; /* Giảm kích thước header */
   }
@@ -177,8 +192,6 @@ section a {
     font-size: 14px;
   }
 }
-
-
 
 /* Nút Thoát */
 .close-btn {
